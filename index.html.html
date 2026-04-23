@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>新規就農者応援キャンペーン | 日本農業新聞 電子版</title>
+  <meta name="description" content="就農5年目までの新規就農者限定！日本農業新聞電子版が月額1,100円（税込）で読めるキャンペーン。クレジットカード払い限定。令和8年4月1日〜令和10年3月31日。" />
+  <style>
+    /* ===== RESET & BASE ===== */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --green-dark:  #1a5c2a;
+      --green-mid:   #2d8a45;
+      --green-light: #4caf65;
+      --green-pale:  #e8f5ec;
+      --yellow:      #f5a623;
+      --yellow-pale: #fff8ec;
+      --gray-dark:   #2c2c2c;
+      --gray-mid:    #555;
+      --gray-light:  #f4f4f4;
+      --white:       #ffffff;
+      --radius:      12px;
+      --shadow:      0 4px 20px rgba(0,0,0,0.10);
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Hiragino Kaku Gothic ProN', 'Noto Sans JP', 'Meiryo', sans-serif;
+      color: var(--gray-dark);
+      background: var(--white);
+      line-height: 1.7;
+    }
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+
+    /* ===== LAYOUT ===== */
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    section { padding: 72px 0; }
+    section:nth-child(even) { background: var(--green-pale); }
+
+    /* ===== HEADER ===== */
+    header {
+      background: var(--green-dark);
+      color: var(--white);
+      padding: 16px 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.25);
+    }
+    header .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+    .header-logo {
+      font-size: 0.95rem;
+      font-weight: 700;
+      line-height: 1.3;
+    }
+    .header-logo span {
+      display: block;
+      font-size: 0.72rem;
+      font-weight: 400;
+      opacity: 0.8;
+    }
+    .header-cta {
+      background: var(--yellow);
+      color: var(--gray-dark);
+      font-weight: 700;
+      font-size: 0.82rem;
+      padding: 8px 18px;
+      border-radius: 50px;
+      white-space: nowrap;
+      transition: opacity 0.2s;
+    }
+    .header-cta:hover { opacity: 0.85; }
+
+    /* ===== HERO ===== */
+    #hero {
+      background: linear-gradient(145deg, var(--green-dark) 0%, var(--green-mid) 60%, #3aaf58 100%);
+      color: var(--white);
+      padding: 80px 0 72px;
+      position: relative;
+      overflow: hidden;
+    }
+    #hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Ccircle cx='30' cy='30' r='20'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+      pointer-events: none;
+    }
+    .hero-badge {
+      display: inline-block;
+      background: var(--yellow);
+      color: var(--gray-dark);
+      font-size: 0.78rem;
+      font-weight: 700;
+      padding: 5px 14px;
+      border-radius: 50px;
+      margin-bottom: 20px;
+      letter-spacing: 0.05em;
+    }
+    #hero h1 {
+      font-size: clamp(1.8rem, 5vw, 2.8rem);
+      font-weight: 900;
+      line-height: 1.25;
+      margin-bottom: 16px;
+      letter-spacing: -0.01em;
+    }
+    #hero h1 em {
+      font-style: normal;
+      color: var(--yellow);
+    }
+    .hero-sub {
+      font-size: 1rem;
+      opacity: 0.9;
+      margin-bottom: 36px;
+      max-width: 520px;
+    }
+    .price-highlight {
+      display: inline-flex;
+      align-items: baseline;
+      gap: 4px;
+      background: rgba(255,255,255,0.15);
+      border: 2px solid rgba(255,255,255,0.35);
+      border-radius: var(--radius);
+      padding: 18px 28px;
+      margin-bottom: 36px;
+      backdrop-filter: blur(4px);
+    }
+    .price-label {
+      font-size: 1rem;
+      font-weight: 700;
+      opacity: 0.9;
+    }
+    .price-amount {
+      font-size: clamp(2.8rem, 8vw, 4.2rem);
+      font-weight: 900;
+      color: var(--yellow);
+      line-height: 1;
+    }
+    .price-unit {
+      font-size: 1.1rem;
+      font-weight: 700;
+      opacity: 0.9;
+    }
+    .price-note {
+      font-size: 0.75rem;
+      opacity: 0.75;
+      margin-top: 8px;
+    }
+    .hero-period {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255,255,255,0.12);
+      border-radius: 8px;
+      padding: 10px 18px;
+      font-size: 0.88rem;
+      font-weight: 600;
+    }
+    .hero-period .icon { font-size: 1.1rem; }
+    .hero-cta-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 36px;
+    }
+    .btn-primary {
+      display: inline-block;
+      background: var(--yellow);
+      color: var(--gray-dark);
+      font-weight: 800;
+      font-size: 1.05rem;
+      padding: 16px 36px;
+      border-radius: 50px;
+      box-shadow: 0 4px 16px rgba(245,166,35,0.5);
+      transition: transform 0.18s, box-shadow 0.18s;
+    }
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(245,166,35,0.55);
+    }
+    .btn-secondary {
+      display: inline-block;
+      background: transparent;
+      color: var(--white);
+      font-weight: 700;
+      font-size: 1rem;
+      padding: 15px 30px;
+      border-radius: 50px;
+      border: 2px solid rgba(255,255,255,0.6);
+      transition: background 0.18s, border-color 0.18s;
+    }
+    .btn-secondary:hover {
+      background: rgba(255,255,255,0.12);
+      border-color: white;
+    }
+
+    /* ===== SECTION TITLE ===== */
+    .section-title {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+    .section-title .label {
+      display: inline-block;
+      background: var(--green-mid);
+      color: var(--white);
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      padding: 4px 14px;
+      border-radius: 50px;
+      margin-bottom: 12px;
+      text-transform: uppercase;
+    }
+    .section-title h2 {
+      font-size: clamp(1.5rem, 4vw, 2rem);
+      font-weight: 800;
+      color: var(--green-dark);
+      line-height: 1.3;
+    }
+    .section-title p {
+      color: var(--gray-mid);
+      margin-top: 10px;
+      font-size: 0.95rem;
+    }
+
+    /* ===== CONDITIONS ===== */
+    .conditions-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+    }
+    .condition-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 32px 28px;
+      box-shadow: var(--shadow);
+      border-top: 5px solid var(--green-mid);
+      position: relative;
+    }
+    .condition-card .num {
+      font-size: 2.5rem;
+      font-weight: 900;
+      color: var(--green-light);
+      opacity: 0.3;
+      line-height: 1;
+      position: absolute;
+      top: 24px;
+      right: 24px;
+    }
+    .condition-card h3 {
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: var(--green-dark);
+      margin-bottom: 10px;
+      line-height: 1.4;
+    }
+    .condition-card p {
+      font-size: 0.87rem;
+      color: var(--gray-mid);
+      line-height: 1.7;
+    }
+    .condition-card .tag {
+      display: inline-block;
+      background: var(--green-pale);
+      color: var(--green-dark);
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 3px 10px;
+      border-radius: 50px;
+      margin-bottom: 12px;
+    }
+
+    /* ===== FLOW STEPS ===== */
+    .flow-steps {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      position: relative;
+      max-width: 640px;
+      margin: 0 auto;
+    }
+    .flow-step {
+      display: flex;
+      align-items: flex-start;
+      gap: 20px;
+      position: relative;
+    }
+    .flow-step:not(:last-child)::after {
+      content: '';
+      position: absolute;
+      left: 23px;
+      top: 52px;
+      bottom: -20px;
+      width: 2px;
+      background: var(--green-light);
+      opacity: 0.4;
+    }
+    .step-num {
+      flex-shrink: 0;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: var(--green-mid);
+      color: var(--white);
+      font-weight: 800;
+      font-size: 1.2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 2px 10px rgba(45,138,69,0.35);
+      margin-top: 4px;
+    }
+    .step-body {
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 20px 24px;
+      box-shadow: var(--shadow);
+      flex: 1;
+      margin-bottom: 24px;
+    }
+    .step-body h3 {
+      font-size: 1rem;
+      font-weight: 800;
+      color: var(--green-dark);
+      margin-bottom: 6px;
+    }
+    .step-body p {
+      font-size: 0.87rem;
+      color: var(--gray-mid);
+    }
+    .step-icon {
+      font-size: 1.5rem;
+      margin-bottom: 6px;
+    }
+
+    /* ===== FEATURES ===== */
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 24px;
+    }
+    .feature-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 28px 24px;
+      box-shadow: var(--shadow);
+      transition: transform 0.2s;
+    }
+    .feature-card:hover { transform: translateY(-4px); }
+    .feature-icon {
+      font-size: 2rem;
+      margin-bottom: 14px;
+    }
+    .feature-card h3 {
+      font-size: 1rem;
+      font-weight: 800;
+      color: var(--green-dark);
+      margin-bottom: 8px;
+    }
+    .feature-card p {
+      font-size: 0.85rem;
+      color: var(--gray-mid);
+      line-height: 1.7;
+    }
+    .feature-card .app-badge {
+      display: inline-block;
+      margin-top: 10px;
+      font-size: 0.72rem;
+      background: var(--yellow-pale);
+      color: #9a6800;
+      border: 1px solid #f5d68a;
+      padding: 2px 10px;
+      border-radius: 50px;
+      font-weight: 600;
+    }
+
+    /* ===== PRICE TABLE ===== */
+    .price-table {
+      max-width: 560px;
+      margin: 0 auto;
+      background: var(--white);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+    .price-table table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    .price-table th, .price-table td {
+      padding: 16px 20px;
+      text-align: left;
+      font-size: 0.9rem;
+      border-bottom: 1px solid #e8e8e8;
+    }
+    .price-table th {
+      background: var(--green-dark);
+      color: var(--white);
+      font-weight: 700;
+    }
+    .price-table tr:last-child td { border-bottom: none; }
+    .price-table .highlight-row td {
+      background: var(--green-pale);
+      font-weight: 700;
+      color: var(--green-dark);
+    }
+    .price-table .campaign-price {
+      font-size: 1.2rem;
+      color: var(--green-mid);
+    }
+
+    /* ===== CTA SECTION ===== */
+    #cta {
+      background: linear-gradient(135deg, var(--green-dark) 0%, #1e6e33 100%);
+      color: var(--white);
+      text-align: center;
+    }
+    #cta h2 {
+      font-size: clamp(1.5rem, 4vw, 2.2rem);
+      font-weight: 900;
+      margin-bottom: 16px;
+    }
+    #cta p {
+      opacity: 0.85;
+      margin-bottom: 36px;
+      font-size: 0.95rem;
+    }
+    .cta-note {
+      margin-top: 20px;
+      font-size: 0.78rem;
+      opacity: 0.65;
+    }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background: #111;
+      color: rgba(255,255,255,0.7);
+      padding: 36px 0;
+      text-align: center;
+      font-size: 0.82rem;
+      line-height: 1.9;
+    }
+    footer a { color: rgba(255,255,255,0.6); text-decoration: underline; }
+    footer a:hover { color: white; }
+
+    /* ===== NOTICE BOX ===== */
+    .notice-box {
+      background: var(--yellow-pale);
+      border-left: 4px solid var(--yellow);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      padding: 16px 20px;
+      font-size: 0.85rem;
+      color: var(--gray-dark);
+      margin-top: 32px;
+      max-width: 640px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .notice-box strong { color: #9a5700; }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 600px) {
+      section { padding: 52px 0; }
+      .hero-cta-group { flex-direction: column; }
+      .btn-primary, .btn-secondary { text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ===== HEADER ===== -->
+<header>
+  <div class="container">
+    <div class="header-logo">
+      日本農業新聞 電子版
+      <span>新規就農者応援キャンペーン</span>
+    </div>
+    <a href="#cta" class="header-cta">申し込む →</a>
+  </div>
+</header>
+
+<!-- ===== HERO ===== -->
+<section id="hero">
+  <div class="container">
+    <div class="hero-badge">🌾 クレジットカード払い限定</div>
+    <h1>新規就農者を、<br>情報の力で<em>応援</em>する。</h1>
+    <p class="hero-sub">農業の今を毎日届ける「日本農業新聞 電子版」が、就農5年目までの新規就農者に特別価格でご利用いただけます。</p>
+
+    <div class="price-highlight">
+      <div>
+        <div style="display:flex;align-items:baseline;gap:6px;">
+          <span class="price-label">月額</span>
+          <span class="price-amount">1,100</span>
+          <span class="price-unit">円（税込）</span>
+        </div>
+        <p class="price-note">※通常月額2,403円 → キャンペーン価格。最大2年間適用。</p>
+      </div>
+    </div>
+
+    <div class="hero-period">
+      <span class="icon">📅</span>
+      <span>キャンペーン期間：令和8年4月1日 〜 令和10年3月31日</span>
+    </div>
+
+    <div class="hero-cta-group">
+      <a href="#cta" class="btn-primary">今すぐ申し込む</a>
+      <a href="#features" class="btn-secondary">電子版の機能を見る</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CONDITIONS ===== -->
+<section id="conditions">
+  <div class="container">
+    <div class="section-title">
+      <span class="label">Eligibility</span>
+      <h2>キャンペーン対象条件</h2>
+      <p>以下の2つの条件を満たす方が対象です</p>
+    </div>
+    <div class="conditions-grid">
+      <div class="condition-card">
+        <span class="num">1</span>
+        <span class="tag">就農歴</span>
+        <h3>就農5年目までの<br>新規就農者</h3>
+        <p>日本農業新聞を購読したことのない方が対象です。過去に購読経験のある方はご利用いただけません。</p>
+      </div>
+      <div class="condition-card">
+        <span class="num">2</span>
+        <span class="tag">契約内容</span>
+        <h3>キャンペーン期間中に<br>電子版を年間契約</h3>
+        <p>年間契約の1年延長で<strong>最大2年間</strong>、月額1,100円が適用されます。キャンペーン終了後は通常価格（月額2,403円）に自動移行します。</p>
+      </div>
+    </div>
+    <div class="notice-box">
+      <strong>⚠️ ご注意：</strong>キャンペーン終了後（令和10年4月以降）は、月額2,403円・年間28,836円（税込）の通常価格に自動移行します。
+    </div>
+  </div>
+</section>
+
+<!-- ===== FLOW ===== -->
+<section id="flow">
+  <div class="container">
+    <div class="section-title">
+      <span class="label">How to Apply</span>
+      <h2>購読までの流れ</h2>
+      <p>申し込みから購読開始まで、最短5営業日</p>
+    </div>
+    <div class="flow-steps">
+      <div class="flow-step">
+        <div class="step-num">1</div>
+        <div class="step-body">
+          <div class="step-icon">🌐</div>
+          <h3>キャンペーンサイトにアクセス</h3>
+          <p>このページ下部のボタン、またはキャンペーンサイトのURLから申し込みページへ進みます。</p>
+        </div>
+      </div>
+      <div class="flow-step">
+        <div class="step-num">2</div>
+        <div class="step-body">
+          <div class="step-icon">💳</div>
+          <h3>申込情報を入力</h3>
+          <p>氏名・住所・クレジットカード情報などの申込情報を入力してください。</p>
+        </div>
+      </div>
+      <div class="flow-step">
+        <div class="step-num">3</div>
+        <div class="step-body">
+          <div class="step-icon">📋</div>
+          <h3>日本農業新聞がID発行</h3>
+          <p>申し込み受付後、5営業日以内に購読用IDが発行されます。</p>
+        </div>
+      </div>
+      <div class="flow-step">
+        <div class="step-num">4</div>
+        <div class="step-body">
+          <div class="step-icon">📧</div>
+          <h3>購読開始メールが届いたらスタート</h3>
+          <p>ID発行後、購読開始のご案内メールが届きます。メール受信後すぐに電子版をお使いいただけます。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FEATURES ===== -->
+<section id="features">
+  <div class="container">
+    <div class="section-title">
+      <span class="label">Features</span>
+      <h2>電子版でできること</h2>
+      <p>朝から夜まで、農業経営をサポートする機能が揃っています</p>
+    </div>
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon">📰</div>
+        <h3>紙面ビューアー</h3>
+        <p>いつもの紙面をスマートフォンやタブレットでどこでも確認。朝、郵便受けに行かなくても最新情報が手に入ります。全面印刷にも対応。</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">⭐</div>
+        <h3>MYカテゴリ</h3>
+        <p>栽培品目・市町村名・JA名などを登録するだけで、自分に関連する情報を自動収集。情報収集の手間を大幅に削減できます。</p>
+        <span class="app-badge">ニュースアプリ限定</span>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">📖</div>
+        <h3>電子版限定 特集ページ</h3>
+        <p>「ニッポンの米」や熊の動向など、注目テーマの記事をまとめた特集ページを電子版限定で公開。話題の情報収集がはかどります。</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🔍</div>
+        <h3>過去記事検索</h3>
+        <p>過去90日間の記事を検索。見逃した記事を後から確認でき、会議のネタ探しや営農情報のヒントに役立ちます。</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🌤</div>
+        <h3>気象情報</h3>
+        <p>1週間の天気予報に加え、1km四方単位の詳細な気温・降水量・日照時間データを提供。栽培品目の積算温度計算も可能です。</p>
+        <span class="app-badge">ニュースアプリ限定</span>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">📊</div>
+        <h3>netアグリ市況</h3>
+        <p>全国14大手卸と連携した野菜・果実・切り花の市況データをグラフで確認。販売価格や営農計画の立案に活用できます。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PRICE ===== -->
+<section id="price">
+  <div class="container">
+    <div class="section-title">
+      <span class="label">Pricing</span>
+      <h2>料金比較</h2>
+      <p>キャンペーン価格と通常価格の違い</p>
+    </div>
+    <div class="price-table">
+      <table>
+        <thead>
+          <tr>
+            <th>プラン</th>
+            <th>月額（税込）</th>
+            <th>年額換算（税込）</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="highlight-row">
+            <td>🌾 キャンペーン価格</td>
+            <td class="campaign-price">1,100円</td>
+            <td>13,200円</td>
+          </tr>
+          <tr>
+            <td>通常価格</td>
+            <td>2,403円</td>
+            <td>28,836円</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="notice-box">
+      <strong>💡 最大2年間適用：</strong>年間契約を1年延長することで、キャンペーン価格（月額1,100円）が最大2年間継続されます。2年間で合計<strong>31,272円お得</strong>になります。
+    </div>
+  </div>
+</section>
+
+<!-- ===== CTA ===== -->
+<section id="cta">
+  <div class="container">
+    <h2>農業の情報格差を、<br>一緒になくそう。</h2>
+    <p>就農5年目までの方限定。今すぐキャンペーンサイトから申し込めます。</p>
+    <a href="https://www.agrinews.co.jp/" target="_blank" rel="noopener" class="btn-primary" style="font-size:1.1rem;padding:18px 48px;">
+      キャンペーンサイトへ →
+    </a>
+    <p class="cta-note">
+      お問い合わせ：日本農業新聞 電子版事務局<br>
+      <a href="mailto:dkanri@agrinews.co.jp" style="color:rgba(255,255,255,0.7);text-decoration:underline;">dkanri@agrinews.co.jp</a>
+    </p>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="container">
+    <p>© 日本農業新聞</p>
+    <p style="margin-top:6px;">
+      キャンペーン期間：令和8年（2026年）4月1日 〜 令和10年（2028年）3月31日
+    </p>
+    <p style="margin-top:6px;font-size:0.76rem;opacity:0.55;">
+      ※本サイトはキャンペーン紹介を目的とした非公式の静的ページです。申し込み・詳細は日本農業新聞公式サイトをご確認ください。
+    </p>
+  </div>
+</footer>
+
+</body>
+</html>
